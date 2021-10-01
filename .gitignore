@@ -9,3 +9,5 @@
 # Maven
 log/
 target/
+/.idea/
+/.idea/libraries/
