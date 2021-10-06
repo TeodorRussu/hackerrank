@@ -38,21 +38,20 @@ public class PlusMinus {
                 negatives++;
         }
 
-        String output = String.format(outputTemplate, positives / arrLength, negatives / arrLength, zeros / arrLength);
-        System.out.println(output);
-        return output;
+        if (arrLength == 0)
+            return "";
+        return String.format(outputTemplate, positives / arrLength, negatives / arrLength, zeros / arrLength);
     }
 
     public String main(String inputFilePath) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)));
+        List<Integer> arr;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFilePath)))) {
 
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
+            arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                    .map(Integer::parseInt)
+                    .collect(toList());
 
-        List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                .map(Integer::parseInt)
-                .collect(toList());
-
-        bufferedReader.close();
+        }
         return plusMinus(arr);
 
     }

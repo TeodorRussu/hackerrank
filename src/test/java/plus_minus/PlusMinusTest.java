@@ -11,7 +11,7 @@ class PlusMinusTest {
 
 
     @Test
-    public void testSampleInput() throws IOException {
+    void testSampleInput() throws IOException {
         String expected = "0.500000\n" +
                 "0.333333\n" +
                 "0.166667";
